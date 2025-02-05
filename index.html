@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketHub - Your Ultimate Event Ticketing Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/events.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">TicketHub</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="pages/events.html">Events</a></li>
+                <li><a href="pages/about.html">About</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+                <!-- Dashboard Link (shown when logged in) -->
+                <li class="dashboard-link" style="display: none;">
+                    <a href="pages/user/dashboard.html">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <!-- Auth Buttons (shown when logged out) -->
+                <div class="auth-buttons">
+                <li><a href="pages/login.html" class="btn-login">Login</a></li>
+                <li><a href="pages/register.html" class="btn-register">Register</a></li>
+                </div>
+                <!-- User Menu (shown when logged in) -->
+                <div class="user-menu" style="display: none;">
+                    <li class="user-dropdown">
+                        <a href="#" class="user-name">
+                            <i class="fas fa-user-circle"></i>
+                            <span>User</span>
+                        <div class="dropdown-menu">
+                            <a href="pages/user/dashboard.html">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                            <a href="pages/user/bookings.html">
+                                <i class="fas fa-ticket-alt"></i> My Bookings
+                            </a>
+                            <a href="pages/user/profile.html">
+                                <i class="fas fa-user"></i> Profile
+                            </a>
+                            <a href="pages/user/settings.html">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="javascript:void(0)" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Discover Amazing Events</h1>
+                <p>Book tickets for the most exciting events happening around you</p>
+                <a href="pages/events.html" class="cta-button">Explore Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events Section -->
+    <section id="featured" class="featured-section">
+        <div class="container">
+            <h2>Featured Events</h2>
+            <div class="event-grid">
+                <!-- Event cards will be dynamically populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories-section">
+        <div class="container">
+            <h2>Event Categories</h2>
+            <div class="category-grid">
+                <a href="pages/events.html?category=concerts" class="category-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Concerts</h3>
+                </a>
+                <a href="pages/events.html?category=theater" class="category-card">
+                    <i class="fas fa-theater-masks"></i>
+                    <h3>Theater</h3>
+                </a>
+                <a href="pages/events.html?category=sports" class="category-card">
+                    <i class="fas fa-futbol"></i>
+                    <h3>Sports</h3>
+                </a>
+                <a href="pages/events.html?category=comedy" class="category-card">
+                    <i class="fas fa-microphone"></i>
+                    <h3>Comedy</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <i class="fas fa-search"></i>
+                    <h3>Find Events</h3>
+                    <p>Browse through our curated list of events</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h3>Book Tickets</h3>
+                    <p>Select your tickets and secure your spot</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-qrcode"></i>
+                    <h3>Get QR Code</h3>
+                    <p>Receive your ticket with a unique QR code</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section id="upcoming" class="upcoming-section">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <div class="event-slider">
+                <!-- Event slides will be dynamically populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2>What Our Users Say</h2>
+            <div class="testimonials-grid">
+                <!-- Testimonials will be dynamically populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TicketHub</h3>
+                    <p>Your ultimate destination for event tickets</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="pages/about.html">About Us</a></li>
+                        <li><a href="pages/events.html">Events</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                        <li><a href="pages/privacy.html">Privacy Policy</a></li>
+                        <li><a href="pages/terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@tickethub.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TicketHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Check authentication state and update UI on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateNavigation();
+            
+            // Show/hide dashboard link based on auth state
+            const dashboardLink = document.querySelector('.dashboard-link');
+            if (dashboardLink) {
+                dashboardLink.style.display = isLoggedIn() ? 'block' : 'none';
+            }
+        });
+    </script>
+
+    <style>
+        .user-dropdown {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .user-name {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            color: #1e293b;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .user-name:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: white;
+            min-width: 220px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 0.5rem;
+            z-index: 1000;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+            animation: dropdownSlide 0.3s ease;
+        }
+
+        @keyframes dropdownSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: #1e293b;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .dropdown-menu a:hover {
+            background: #f8fafc;
+            transform: translateX(4px);
+        }
+
+        .dropdown-menu a i {
+            margin-right: 0.75rem;
+            width: 1.25rem;
+            color: #64748b;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-menu a:hover i {
+            color: #1a237e;
+        }
+
+        .dropdown-menu a.active {
+            background: #f1f5f9;
+            color: #1a237e;
+        }
+
+        .dropdown-menu a.active i {
+            color: #1a237e;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 0.5rem 0;
+        }
+    </style>
+
+    <script>
+        // Setup dropdown functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const userDropdown = document.querySelector('.user-dropdown');
+            if (userDropdown) {
+                const dropdownMenu = userDropdown.querySelector('.dropdown-menu');
+                userDropdown.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('show');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', () => {
+                    dropdownMenu.classList.remove('show');
+                });
+
+                // Prevent dropdown from closing when clicking inside
+                dropdownMenu.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            }
+
+            // Update active state based on current page
+            const currentPath = window.location.pathname;
+            const menuLinks = document.querySelectorAll('.dropdown-menu a');
+            menuLinks.forEach(link => {
+                if (currentPath.includes(link.getAttribute('href'))) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
