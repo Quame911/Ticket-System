@@ -86,5 +86,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-Your Name - your.email@example.com
-Project Link: https://github.com/yourusername/tickethub 
+Your Name - your.quametempest1327@gmai.com
+Project Link: https://github.com/Quame911/tickethub 
